@@ -8,17 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 
 
 public class PythonActivity extends AppCompatActivity {
-    static android.app.Activity instance;
-    static org.python.Object _listener;
+    org.python.Object _listener;
 
     /**
      * Set the object that will receive native application events
      *
      * Returns the activity instance.
      */
-    static public android.app.Activity setListener(org.python.Object listener) {
+    public android.app.Activity setListener(org.python.Object listener) {
         _listener = listener;
-        return instance;
+        return this;
     }
 
     public float device_scale = 1.0f;
@@ -27,7 +26,6 @@ public class PythonActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // There will only be one instance of this activity; store it.
-        this.instance = this;
 
         // Establish the scale factor
         DisplayMetrics metrics = new DisplayMetrics();
